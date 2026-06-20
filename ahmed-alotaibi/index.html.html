@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>البروفايل المهني | أحمد العتيبي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    
+    <style>
+        :root {
+            --bg-light: #f7f9f6;        
+            --text-dark: #2c3e2b;       
+            --primary-dark: #1b3821;    
+            --accent-gold: #c5a059;     
+            --secondary-gray: #7a8a7c;  
+            --white: #ffffff;
+            --card-shadow: 0 4px 15px rgba(27, 56, 33, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 2.2fr;
+            gap: 35px;
+        }
+
+        /* العمود الجانبي */
+        .sidebar {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 45px 30px;
+            border-radius: 24px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(27, 56, 33, 0.12);
+            height: fit-content;
+            position: sticky;
+            top: 40px;
+        }
+
+        .profile-avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 3px solid var(--accent-gold);
+            margin: 0 auto 25px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 55px;
+            color: var(--accent-gold);
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .sidebar h1 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .sidebar .title {
+            color: var(--accent-gold);
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .contact-info {
+            text-align: right;
+            margin-bottom: 30px;
+            font-size: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 25px;
+        }
+
+        .contact-info p {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #e1e7e2;
+        }
+
+        .contact-info p i {
+            color: var(--accent-gold);
+            width: 16px;
+            text-align: center;
+        }
+
+        /* أزرار شبكات التواصل الاجتماعي */
+        .social-media-grid {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.06);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .social-icon:hover {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        /* الباركود */
+        .qr-section {
+            background: rgba(255, 255, 255, 0.04);
+            padding: 20px;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .qr-section p {
+            font-size: 12px;
+            color: #cbd5cb;
+            margin-bottom: 15px;
+        }
+
+        #qrcode img {
+            border: 4px solid white;
+            border-radius: 8px;
+        }
+
+        /* المحتوى الرئيسي */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .card {
+            background-color: var(--white);
+            padding: 35px;
+            border-radius: 24px;
+            box-shadow: var(--card-shadow);
+            border-right: 5px solid var(--secondary-gray);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(27, 56, 33, 0.08);
+            border-right-color: var(--accent-gold);
+        }
+
+        .card h2 {
+            color: var(--primary-dark);
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 22px;
+            border-bottom: 2px solid #eef2ef;
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card h2 i {
+            color: var(--accent-gold);
+            font-size: 18px;
+        }
+
+        .bio-text {
+            color: #485c4b;
+            text-align: justify;
+        }
+
+        /* المهارات */
+        .skills-section h3 {
+            font-size: 14.5px;
+            color: var(--secondary-gray);
+            margin: 20px 0 10px 0;
+            font-weight: 600;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background-color: #f0f4f1;
+            color: var(--primary-dark);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            border: 1px solid #e2eae3;
+        }
+
+        .skill-tag:hover {
+            background-color: var(--primary-dark);
+            color: var(--white);
+        }
+
+        /* الخط الزمني */
+        .timeline-item {
+            border-right: 2px solid #e2eae3;
+            padding-right: 25px;
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            right: -6px;
+            top: 6px;
+            width: 10px;
+            height: 10px;
+            background-color: var(--secondary-gray);
+            border-radius: 50%;
+        }
+
+        .card:hover .timeline-item::after {
+            background-color: var(--accent-gold);
+        }
+
+        .timeline-date {
+            font-size: 12.5px;
+            color: var(--accent-gold);
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 4px;
+        }
+
+        .timeline-title {
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 16.5px;
+        }
+
+        .timeline-company {
+            color: #5c7560;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .timeline-desc {
+            font-size: 13.5px;
+            color: #4a5c4d;
+            padding-right: 5px;
+        }
+        
+        .timeline-desc li {
+            margin-bottom: 6px;
+            list-style-type: square;
+            margin-right: 15px;
+        }
+
+        /* الشهادات */
+        .cert-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            background-color: #f8faf8;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            border-left: 3px solid var(--accent-gold);
+        }
+
+        .cert-item i {
+            color: var(--accent-gold);
+            margin-top: 4px;
+        }
+
+        .cert-details h4 {
+            font-size: 14.5px;
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+
+        .cert-details p {
+            font-size: 12.5px;
+            color: var(--secondary-gray);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                margin: 15px auto;
+            }
+            .sidebar {
+                position: relative;
+                top: 0;
+                padding: 35px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <aside class="sidebar">
+            <div class="profile-avatar">
+                <i class="fa-solid fa-user-tie"></i>
+            </div>
+            
+            <h1>أحمد العتيبي</h1>
+            <p class="title">مستشار قانوني ومحامٍ مشارك</p>
+            
+            <div class="contact-info">
+                <p><i class="fa-solid fa-location-dot"></i> الرياض، المملكة العربية السعودية</p>
+                <p><i class="fa-solid fa-phone"></i> +966 50 123 4567</p>
+                <p><i class="fa-solid fa-envelope"></i> a.alotaibi@example.com</p>
+            </div>
+
+            <div class="social-media-grid">
+                <a href="https://linkedin.com/" target="_blank" class="social-icon" title="LinkedIn">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="https://x.com/" target="_blank" class="social-icon" title="X (Twitter)">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
+                <a href="https://wa.me/966501234567" target="_blank" class="social-icon" title="WhatsApp">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+            </div>
+
+            <div class="qr-section">
+                <p>امسح الكود لتصفح الملف</p>
+                <div id="qrcode"></div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            
+            <section class="card">
+                <h2><i class="fa-solid fa-address-card"></i> الخلاصة المهنية</h2>
+                <p class="bio-text">مستشار قانوني متخصص في قانون الشركات والامتثال التنظيمي وحوكمة الأعمال. أمتلك خبرة عملية في صياغة العقود والاتفاقيات التجارية المعقدة وتأسيس الشركات، مع تقديم حلول استشارية وقائية تسهم في حماية مصالح الشركات وتطوير بيئتها التشغيلية والقانونية بما يتوافق مع الأنظمة السعودية الحديثة.</p>
+            </section>
+
+            <section class="card">
+                <h2><i class="fa-solid fa-briefcase"></i> الخبرات المهنية</h2>
+                
+                <div class="timeline-item">
+                    <span class="timeline-date">مارس 2025 - حتى الآن</span>
+                    <p class="timeline-title">مستشار قانوني - حوكمة الشركات</p>
+                    <p class="timeline-company">شركة سين للمحاماة والاستشارات القانونية - الرياض</p>
+                    <ul class="timeline-desc">
+                        <li>إعداد ومراجعة لوائح الحوكمة وسياسات الامتثال الداخلي للشركات والمنشآت التجارية.</li>
+                        <li>صياغة وتدقيق العقود والاتفاقيات ومذكرات التفاهم باللغتين العربية والإنجليزية.</li>
+                        <li>تقديم الاستشارات القانونية الوقائية وتحديد الثغرات والمخاطر التنظيمية المحتملة.</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-date">يناير 2023 - فبراير 2025</span>
+                    <p class="timeline-title">أخصائي قانوني ومحامٍ متدرب</p>
+                    <p class="timeline-company">مكتب العهد للمحاماة والاستشارات القانونية</p>
+                    <ul class="timeline-desc">
+                        <li>صياغة المذكرات القانونية واللوائح الاعتراضية والدفوع أمام المحاكم التجارية والعمالية.</li>
+                        <li>تأسيس الشركات بكافة أنواعها ومتابعة تعديل عقود التأسيس عبر منصات وزارة التجارة.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="card">
+                <h2><i class="fa-solid fa-graduation-cap"></i> المؤهل الأكاديمي</h2>
+                <div class="timeline-item" style="border-right-color: var(--accent-gold);">
+                    <span class="timeline-date">خريج 2022</span>
+                    <p class="timeline-title">بكالوريوس القانون</p>
+                    <p class="timeline-company">جامعة الملك سعود - كلية الحقوق والعلوم السياسية</p>
+                    <p style="font-size: 13.5px; color: var(--secondary-gray);">• المعدل التراكمي: <strong>4.88 / 5.00</strong> | <strong>امتياز مع مرتبة الشرف الأولى</strong></p>
+                </div>
+            </section>
+
+            <section class="card">
+                <h2><i class="fa-solid fa-award"></i> الشهادات المهنية والزمالات</h2>
+                
+                <div class="cert-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <div class="cert-details">
+                        <h4>رخصة ممارسة أعمال المحاماة</h4>
+                        <p>وزارة العدل السعودية</p>
+                    </div>
+                </div>
+
+                <div class="cert-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <div class="cert-details">
+                        <h4>الشهادة الاحترافية في حوكمة الشركات والالتزام (GRCP)</h4>
+                        <p>معهد الالتزام الدولي</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card">
+                <h2><i class="fa-solid fa-screwdriver-wrench"></i> المهارات التخصصية</h2>
+                
+                <div class="skills-section">
+                    <h3>الكفاءات القانونية:</h3>
+                    <div class="skills-container">
+                        <span class="skill-tag">نظام الشركات الجديد</span>
+                        <span class="skill-tag">صياغة العقود التجارية</span>
+                        <span class="skill-tag">الحوكمة والالتزام</span>
+                        <span class="skill-tag">البحث والتحليل القانوني</span>
+                    </div>
+                </div>
+
+                <div class="skills-section">
+                    <h3>المهارات الرقمية والعامة:</h3>
+                    <div class="skills-container">
+                        <span class="skill-tag">المنصات العدلية (ناجز)</span>
+                        <span class="skill-tag">كتابة التقارير التنفيذية</span>
+                        <span class="skill-tag">إدارة المشاريع القانونية</span>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        // كود تشغيل الباركود التلقائي
+        window.addEventListener("DOMContentLoaded", () => {
+            let currentUrl = window.location.href;
+            if(currentUrl.startsWith("file://") || currentUrl.includes("localhost")) {
+                currentUrl = "https://linkedin.com"; // رابط افتراضي أثناء التجربة المحلية
+            }
+            try {
+                new QRCode(document.getElementById("qrcode"), {
+                    text: currentUrl,
+                    width: 110,
+                    height: 110,
+                    colorDark : "#1b3821", 
+                    colorLight : "#ffffff",
+                    correctLevel : QRCode.CorrectLevel.H
+                });
+            } catch(e) {
+                console.log("QR Code library loading...");
+            }
+        });
+    </script>
+</body>
+</html>
